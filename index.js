@@ -5,15 +5,19 @@ import './css/style.css';
 
 // Write Javascript code!
 
-var accBtn = document.querySelector('#accBtn');
-var addAccBtn = document.querySelector('#addAccBtn');
-var editDeleteBtn = document.querySelector('#editDeleteBtn');
-
-var mainBody = document.querySelector('#mainBody');
-var mainView = document.querySelector('#mainView');
-var formView = document.querySelector('#formView');
-
-var db = [
+// Accounts
+var showAccountsBtn = document.querySelector('#showAccountsBtn');
+var accountsView = document.querySelector('#accountsView');
+var accountsBody = document.querySelector('#accountsBody');
+showAccountsBtn.addEventListener('click', showAccountsPage);
+function showAccountsPage() {
+  if (accountsView.classList.contains('d-none')) {
+    accountsView.classList.remove('d-none');
+    addAccountView.classList.add('d-none');
+    editDeleteAccountView.classList.add('d-none');
+  }
+}
+var accountsData = [
   {
     id: '1',
     name: 'Mark Otto',
@@ -33,18 +37,40 @@ var db = [
     cCard: 'American express',
   },
 ];
-
-function createTable() {
+function createAccountsTable() {
   var text = '';
-  for (var i = 0; i < db.length; i++) {
+  for (var i = 0; i < accountsData.length; i++) {
     text += '<tr>';
-    text += '<td>' + db[i].id + '</td>';
-    text += '<td>' + db[i].name + '</td>';
-    text += '<td>' + db[i].deposit + '</td>';
-    text += '<td>' + db[i].cCard + '</td>';
+    text += '<td>' + accountsData[i].id + '</td>';
+    text += '<td>' + accountsData[i].name + '</td>';
+    text += '<td>' + accountsData[i].deposit + '</td>';
+    text += '<td>' + accountsData[i].cCard + '</td>';
     text += '</tr>';
   }
-  mainBody.innerHTML = text;
+  accountsBody.innerHTML = text;
+}
+createAccountsTable();
+
+// Add Accounts
+var showAddAccountBtn = document.querySelector('#showAddAccountBtn');
+var addAccountView = document.querySelector('#addAccountView');
+showAddAccountBtn.addEventListener('click', showAddAccountPage);
+function showAddAccountPage() {
+  if (addAccountView.classList.contains('d-none')) {
+    accountsView.classList.add('d-none');
+    addAccountView.classList.remove('d-none');
+    editDeleteAccountView.classList.add('d-none');
+  }
 }
 
-createTable();
+// Edit / Delete Accounts
+var showEditDeleteBtn = document.querySelector('#showEditDeleteBtn');
+var editDeleteAccountView = document.querySelector('#editDeleteAccountView');
+showEditDeleteBtn.addEventListener('click', showEditDeleteAccountPage);
+function showEditDeleteAccountPage() {
+  if (addAccountView.classList.contains('d-none')) {
+    accountsView.classList.add('d-none');
+    addAccountView.classList.add('d-none');
+    editDeleteAccountView.classList.remove('d-none');
+  }
+}
