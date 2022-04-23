@@ -115,45 +115,18 @@
           <div class="col-12 col-md-10">
             <h2 class="mb-4">Edit / Delete account</h2>
 
-            <form>
-              <div class="mb-3">
-                <label for="id" class="form-label">ID</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="id"
-                  aria-describedby="id"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  aria-describedby="name"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="deposit" class="form-label">Deposit</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="deposit"
-                  aria-describedby="deposit"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="cCard" class="form-label">Credit card</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cCard"
-                  aria-describedby="cCard"
-                />
-              </div>
-              <button class="btn btn-primary" type="submit">Add account</button>
-            </form>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Deposit</th>
+                  <th scope="col">Credit card</th>
+                </tr>
+              </thead>
+              <tbody id="accountsBody"></tbody>
+            </table>
+
           </div>
         </div>
       </div>
