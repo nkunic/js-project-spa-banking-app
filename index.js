@@ -103,6 +103,7 @@ function addNewAccount() {
 /****** EDIT / DELETE ACCOUNT ******/
 var showEditDeleteBtn = document.querySelector('#showEditDeleteBtn');
 var editDeleteAccountView = document.querySelector('#editDeleteAccountView');
+var editDeleteAccountBody = document.querySelector('#editDeleteAccountBody');
 
 // Show Edit/Delete accounts page
 showEditDeleteBtn.addEventListener('click', showEditDeleteAccountPage);
