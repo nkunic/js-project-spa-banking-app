@@ -14,48 +14,34 @@
     </a>
 
     <div class="d-flex justify-content-center align-items-center">
-      <button type="button" class="btn btn-primary">Accounts</button>
-      <button type="button" class="ms-3 btn btn-info">Add account</button>
-      <button type="button" class="ms-3 btn btn-danger">
+      <button id="accBtn" type="button" class="btn btn-primary">
+        Accounts
+      </button>
+      <button id="addAccBtn" type="button" class="ms-3 btn btn-info">
+        Add account
+      </button>
+      <button id="editDeleteBtn" type="button" class="ms-3 btn btn-danger">
         Edit / Delete account
       </button>
     </div>
   </header>
 
   <main class="container-fluid py-4">
-    <div class="row justify-content-center">
+    <div id="mainView" class="row justify-content-center">
       <div class="col-12 col-md-8">
         <div class="row justify-content-center">
-          <div class="col-12 col-md-8">
-            <h2>Accounts</h2>            
+          <div class="col-12 col-md-10">
+            <h2>Accounts</h2>
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">id#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Deposit</th>
+                  <th scope="col">Credit card</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
+              <tbody id="mainBody"></tbody>
             </table>
           </div>
         </div>
