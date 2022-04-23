@@ -27,13 +27,12 @@
   </header>
 
   <main class="container-fluid py-4">
-
     <!-- Accounts -->
     <div id="accountsView" class="row justify-content-center">
       <div class="col-12 col-md-8">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
-            <h2>Accounts</h2>
+            <h2 class="mb-4">Accounts</h2>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -55,46 +54,54 @@
       <div class="col-12 col-md-8">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
-            <h2>Add account</h2>
+            <h2 class="mb-4">Add account</h2>
 
             <form>
               <div class="mb-3">
-                <label for="id" class="form-label">ID</label>
+                <label for="accountId" class="form-label">ID</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="id"
-                  aria-describedby="id"
+                  id="accountId"
+                  aria-describedby="accountId"
                 />
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="accountName" class="form-label">Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
-                  aria-describedby="name"
+                  id="accountName"
+                  aria-describedby="accountName"
                 />
               </div>
               <div class="mb-3">
-                <label for="deposit" class="form-label">Deposit</label>
+                <label for="accountDeposit" class="form-label">Deposit</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="deposit"
-                  aria-describedby="deposit"
+                  id="accountDeposit"
+                  aria-describedby="accountDeposit"
                 />
               </div>
               <div class="mb-3">
-                <label for="cCard" class="form-label">Credit card</label>
+                <label for="accountCreditCard" class="form-label"
+                  >Credit card</label
+                >
                 <input
                   type="text"
                   class="form-control"
-                  id="cCard"
-                  aria-describedby="cCard"
+                  id="accountCreditCard"
+                  aria-describedby="accountCreditCard"
                 />
               </div>
-              <button class="btn btn-primary" type="submit">Add account</button>
+              <button
+                id="addNewAccountBtn"
+                class="btn btn-primary w-100"
+                type="button"
+              >
+                Add account
+              </button>
             </form>
           </div>
         </div>
@@ -106,7 +113,7 @@
       <div class="col-12 col-md-8">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
-            <h2>Edit / Delete account</h2>
+            <h2 class="mb-4">Edit / Delete account</h2>
 
             <form>
               <div class="mb-3">
