@@ -37,10 +37,10 @@ function createTable() {
   var text = '';
   for(var i = 0; i < db.length; i++) {
     text += '<tr>';
-    text += '<td> + db[i].id + </td>';
-    text += '<td> + db[i].name + </td>';
-    text += '<td> + db[i].deposit + </td>';
-    text += '<td> + db[i].cCard + </td>';
+    text += '<td>' + db[i].id + '</td>';
+    text += '<td>' + db[i].name + '</td>';
+    text += '<td>' + db[i].deposit + '</td>';
+    text += '<td>' + db[i].cCard + '</td>';
     text += '</tr>';
   }
   mainBody.innerHTML = text;
