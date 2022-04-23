@@ -68,7 +68,7 @@ var showEditDeleteBtn = document.querySelector('#showEditDeleteBtn');
 var editDeleteAccountView = document.querySelector('#editDeleteAccountView');
 showEditDeleteBtn.addEventListener('click', showEditDeleteAccountPage);
 function showEditDeleteAccountPage() {
-  if (addAccountView.classList.contains('d-none')) {
+  if (editDeleteAccountView.classList.contains('d-none')) {
     accountsView.classList.add('d-none');
     addAccountView.classList.add('d-none');
     editDeleteAccountView.classList.remove('d-none');
