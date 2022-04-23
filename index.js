@@ -97,7 +97,7 @@ function addNewAccount() {
   // console.log(accountsData);
 
   createAccountsTable();
-  showAddAccountPage();
+  showAccountsPage();
 }
 
 /****** EDIT / DELETE ACCOUNT ******/
