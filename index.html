@@ -20,8 +20,8 @@
       <button id="showAddAccountBtn" type="button" class="ms-3 btn btn-info">
         Add account
       </button>
-      <button id="showEditDeleteBtn" type="button" class="ms-3 btn btn-danger">
-        Edit / Delete account
+      <button id="showEditBtn" type="button" class="ms-3 btn btn-danger">
+        Edit account
       </button>
     </div>
   </header>
@@ -40,6 +40,8 @@
                   <th scope="col">Name</th>
                   <th scope="col">Deposit</th>
                   <th scope="col">Credit card</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody id="accountsBody"></tbody>
@@ -108,27 +110,13 @@
       </div>
     </div>
 
-    <!-- Edit / Delete account -->
-    <div id="editDeleteAccountView" class="row justify-content-center d-none">
+    <!-- Edit account -->
+    <div id="editAccountView" class="row justify-content-center d-none">
       <div class="col-12 col-md-8">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
-            <h2 class="mb-4">Edit / Delete account</h2>
-
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">ID#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Deposit</th>
-                  <th scope="col">Credit card</th>
-                  <th scope="col">Edit</th>
-                  <th scope="col">Delete</th>
-                </tr>
-              </thead>
-              <tbody id="editDeleteAccountBody"></tbody>
-            </table>
-
+            <h2 class="mb-4">Edit account</h2>
+            <div id="editDeleteAccountBody"></div>
           </div>
         </div>
       </div>
