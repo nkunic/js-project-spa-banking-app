@@ -104,6 +104,8 @@ function addNewAccount() {
 var showEditDeleteBtn = document.querySelector('#showEditDeleteBtn');
 var editDeleteAccountView = document.querySelector('#editDeleteAccountView');
 var editDeleteAccountBody = document.querySelector('#editDeleteAccountBody');
+// var editAccountBtn = document.querySelector('#editAccountBtn');
+// var deleteAccountBtn = document.querySelector('#deleteAccountBtn');
 
 // Show Edit/Delete accounts page
 showEditDeleteBtn.addEventListener('click', showEditDeleteAccountPage);
@@ -113,4 +115,42 @@ function showEditDeleteAccountPage() {
     addAccountView.classList.add('d-none');
     editDeleteAccountView.classList.remove('d-none');
   }
+  createEditDeleteAccountsTable();
 }
+
+// Populate edit/delete account data
+function createEditDeleteAccountsTable() {
+  var text = '';
+  for (var i = 0; i < accountsData.length; i++) {
+    text += '<tr>';
+    text += '<td>' + accountsData[i].id + '</td>';
+    text += '<td>' + accountsData[i].name + '</td>';
+    text += '<td>' + accountsData[i].deposit + '</td>';
+    text += '<td>' + accountsData[i].cCard + '</td>';
+    text +=
+      '<td><button id="editAccountBtn" type="button" class="btn btn-warning edit">Edit</button></td>';
+    text +=
+      '<td><button id="deleteAccountBtn" type="button" class="btn btn-danger delete">Delete</button></td>';
+    text += '</tr>';
+  }
+  editDeleteAccountBody.innerHTML = text;
+
+  // Show Edit account page 1
+  var editBtns = document.querySelectorAll('.edit');
+  for(var i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', showEditAccountPage);
+  }
+
+  // Show Delete account page 1
+  var deleteBtns = document.querySelectorAll('.delete');
+  for(var i = 0; i < deleteBtns.length; i++) {
+    deleteBtns[i].addEventListener('click', showDeleteAccountPage);
+
+  }
+}
+
+// Show Edit account page 2
+function showEditAccountPage() {}
+
+// Show Delete account page 2
+function showDeleteAccountPage() {}
