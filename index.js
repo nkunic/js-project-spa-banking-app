@@ -10,6 +10,15 @@ var showAccountsBtn = document.querySelector('#showAccountsBtn');
 var accountsView = document.querySelector('#accountsView');
 var accountsBody = document.querySelector('#accountsBody');
 
+/****** EDIT ACCOUNT ******/
+var editAccountView = document.querySelector('#editAccountView');
+var editAccountBody = document.querySelector('#editAccountBody');
+var editAccountId = document.querySelector('#editAccountId');
+var editAccountName = document.querySelector('#editAccountName');
+var editAccountDeposit = document.querySelector('#editAccountDeposit');
+var editAccountCreditCard = document.querySelector('#editAccountCreditCard');
+var editAccountBtn = document.querySelector('#editAccountBtn');
+
 // Show Accounts page
 showAccountsBtn.addEventListener('click', showAccountsPage);
 function showAccountsPage() {
@@ -53,7 +62,9 @@ function createAccountsTable() {
     text += '<td>' + accountsData[i].deposit + '</td>';
     text += '<td>' + accountsData[i].cCard + '</td>';
     text +=
-      '<td><button id="edit-account-' +
+      '<td><button data-id="edit-account-' +
+      i +
+      '" id="edit-account-' +
       i +
       '" type="button" class="btn btn-warning edit">Edit</button></td>';
     text +=
@@ -65,29 +76,52 @@ function createAccountsTable() {
 
   accountsBody.innerHTML = text;
 
-  // Edit account 1
-  var editBtns = document.querySelectorAll('.edit');
-  for (var i = 0; i < editBtns.length; i++) {
-    editBtns[i].addEventListener('click', editAccount);
-  }
-
-  // Delete account 1
+  // Delete account
   var deleteBtns = document.querySelectorAll('.delete');
   for (var i = 0; i < deleteBtns.length; i++) {
     deleteBtns[i].addEventListener('click', deleteAccount);
   }
-}
 
+  // Edit account
+  var editBtns = document.querySelectorAll('.edit');
+  for (var i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', editAccount);
+  }
+}
 createAccountsTable();
 
-// Show Delete account page 2
+// DELETE account
 function deleteAccount() {
   var accountId = this.id;
-  console.log(accountId);
+  //console.log(accountId);
 
   accountsData.splice(accountId, 1); // 1 quantity of deleted items
 
   createAccountsTable();
+}
+
+// EDIT account
+function editAccount() {
+  //var accountId = this.id;
+  //console.log(accountId);
+  var editAccountId = this.getAttribute('data-id');
+  // console.log(editAccountId);
+
+  // Show Edit Account page
+  function showEditAccountPage() {
+    if (editAccountView.classList.contains('d-none')) {
+      accountsView.classList.add('d-none');
+      addAccountView.classList.add('d-none');
+      editAccountView.classList.remove('d-none');
+    }
+  }
+  showEditAccountPage();
+
+  //
+  editAccountId.value = accountsData[id].accountId;
+  // editAccountName.value = accountsData[name].accountName;
+  // editDepositValue = accountsData[deposit].accountDeposit;
+  // editCreaditCardValue = accountsData[cCard].accountCreditCard;
 }
 
 /****** ADD ACCOUNT ******/
@@ -132,21 +166,3 @@ function addNewAccount() {
   createAccountsTable();
   showAccountsPage();
 }
-
-/****** EDIT / DELETE ACCOUNT ******/
-var showEditBtn = document.querySelector('#showEditBtn');
-var editAccountView = document.querySelector('#editAccountView');
-var editDeleteAccountBody = document.querySelector('#editDeleteAccountBody');
-
-// Show Edit/Delete accounts page
-showEditBtn.addEventListener('click', showEditDeleteAccountPage);
-function showEditDeleteAccountPage() {
-  if (editAccountView.classList.contains('d-none')) {
-    accountsView.classList.add('d-none');
-    addAccountView.classList.add('d-none');
-    editAccountView.classList.remove('d-none');
-  }
-}
-
-// Show Edit account page 2
-function editAccount() {}
