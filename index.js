@@ -5,7 +5,7 @@ import './css/style.css';
 
 // Write Javascript code!
 
-/****** IDENTIFIERS ******/
+/****** PAGE IDENTIFIERS ******/
 // Accounts
 var showAccountsPageBtn = document.querySelector('#showAccountsPageBtn');
 var accountsView = document.querySelector('#accountsView');
@@ -44,20 +44,6 @@ function showEditAccountPage() {
   }
 }
 
-/****** FORM IDENTIFIERS ******/
-// Add account
-var accountInputId = document.querySelector('#accountInputId');
-var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
-var accountInputDeposit = document.querySelector('#accountInputDeposit');
-var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
-var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
-// Edit account
-var editAccountInputId = document.querySelector('#editAccountInputId');
-var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
-var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
-var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
-var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
-
 /****** ACCOUNTS DATA ******/
 var accountsData = [
   {
@@ -81,7 +67,7 @@ var accountsData = [
 ];
 
 /****** ACCOUNTS TABLE ******/
-// Create and populate account data
+// Create and populate account data table
 function createAndPopulateAccountsTable() {
   var text = '';
 
@@ -109,6 +95,61 @@ function createAndPopulateAccountsTable() {
   accountsBody.innerHTML = text;
 }
 createAndPopulateAccountsTable();
+
+/****** FORM IDENTIFIERS ******/
+// Add account
+var addAccountForm = document.querySelector('#addAccountForm');
+var accountInputId = document.querySelector('#accountInputId');
+var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputDeposit = document.querySelector('#accountInputDeposit');
+var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
+var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
+// Edit account
+var editAccountInputId = document.querySelector('#editAccountInputId');
+var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
+var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
+var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
+
+/****** FORM ******/
+
+// Add new account
+addNewAccountFormBtn.addEventListener('click', addNewAccount);
+function addNewAccount() {
+  var accountInputIdValue = accountInputId.value;
+  var accountInputNameSurnameValue = accountInputNameSurname.value;
+  var accountInputDepositValue = accountInputDeposit.value;
+  var accountInputCreaditCardValue = accountInputCreditCard.value;
+  console.log(accountInputIdValue, accountInputNameSurnameValue, accountInputDepositValue, accountInputCreaditCardValue);
+
+  // New account 
+  var newAccount = {
+    accountsDataId: accountInputIdValue,
+    accountsDataNameSurname: accountInputNameSurnameValue,
+    accountsDataDeposit: accountInputDepositValue,
+    accountsDataCreditCard: accountInputCreaditCardValue,
+  };
+  console.log(newAccount);
+
+  // Add new account to accountsData array of objects
+  accountsData.push(newAccount);
+  console.log(accountsData);
+
+  // Create and populate account data table 
+  createAndPopulateAccountsTable();
+
+  // Clear Add new account form 
+  addAccountForm.reset();
+
+  // Show Accounts page
+  showAccountsPage();
+}
+
+
+
+
+
+
 
 // DELETE account
 // function createAndPopulateAccountsTable() {
@@ -150,29 +191,4 @@ createAndPopulateAccountsTable();
 //   // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
 // }
 
-/****** ADD ACCOUNT Form ******/
 
-
-// Add new account
-addNewAccountFormBtn.addEventListener('click', addNewAccount);
-function addNewAccount() {
-  var accountInputIdValue = accountInputId.value;
-  var nameSurnameValue = accountInputNameSurname.value;
-  var depositValue = accountInputDeposit.value;
-  var creaditCardValue = accountInputCreditCard.value;
-  // console.log(accountInputIdValue, nameSurnameValue, depositValue, creaditCardValue);
-
-  var newAccount = {
-    dataId: accountInputIdValue,
-    dataNameSurname: nameSurnameValue,
-    dataDeposit: depositValue,
-    dataCreditCard: creaditCardValue,
-  };
-  //console.log(newAccount);
-
-  accountsData.push(newAccount);
-  // console.log(accountsData);
-
-  createAndPopulateAccountsTable();
-  showAccountsPage();
-}
