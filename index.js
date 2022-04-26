@@ -44,6 +44,20 @@ function showEditAccountPage() {
   }
 }
 
+/****** FORM IDENTIFIERS ******/
+// Add account
+var accountInputId = document.querySelector('#accountInputId');
+var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputDeposit = document.querySelector('#accountInputDeposit');
+var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
+var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
+// Edit account
+var editAccountInputId = document.querySelector('#editAccountInputId');
+var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
+var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
+var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
+
 /****** ACCOUNTS DATA ******/
 var accountsData = [
   {
@@ -66,88 +80,75 @@ var accountsData = [
   },
 ];
 
-/****** FORM IDENTIFIERS ******/
-// Add account
-var accountInputId = document.querySelector('#accountInputId');
-var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
-var accountInputDeposit = document.querySelector('#accountInputDeposit');
-var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
-var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
-// Edit account
-var editAccountInputId = document.querySelector('#editAccountInputId');
-var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
-var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
-var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
-var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
-
-
-// Populate account data
-function createAccountsTable() {
+/****** ACCOUNTS TABLE ******/
+// Create and populate account data
+function createAndPopulateAccountsTable() {
   var text = '';
 
   for (var i = 0; i < accountsData.length; i++) {
     text += '<tr>';
-    text += '<td>' + accountsData[i].dataId + '</td>';
-    text += '<td>' + accountsData[i].dataNameSurname + '</td>';
-    text += '<td>' + accountsData[i].dataDeposit + '</td>';
-    text += '<td>' + accountsData[i].dataCreditCard + '</td>';
+    text += '<td>' + accountsData[i].accountsDataId + '</td>';
+    text += '<td>' + accountsData[i].accountsDataNameSurname + '</td>';
+    text += '<td>' + accountsData[i].accountsDataDeposit + '</td>';
+    text += '<td>' + accountsData[i].accountsDataCreditCard + '</td>';
     text +=
-      '<td><button data-id="edit-account-' +
-      i +
-      '" id="edit-account-' +
-      i +
-      '" type="button" class="btn btn-warning edit">Edit</button></td>';
+      '<td><button ' +
+      'data-id="edit-account-' + i + '"' +
+      'id="edit-account-' + i + '"' +
+      'type="button"' + 
+      'class="btn btn-warning edit">Edit</button></td>';
     text +=
-      '<td><button id="delete-account-' +
-      i +
-      '" type="button" class="btn btn-danger delete">Delete</button></td>';
+      '<td><button ' + 
+      'id="delete-account-' + i + '"' + 
+      'type="button"' +
+      'class="btn btn-danger delete">Delete</button></td>';
     text += '</tr>';
   }
 
   // Inject it to Accounts body
   accountsBody.innerHTML = text;
-
-  // Delete account
-  var deleteBtns = document.querySelectorAll('.delete');
-  for (var i = 0; i < deleteBtns.length; i++) {
-    deleteBtns[i].addEventListener('click', deleteAccount);
-  }
-
-  // Edit account
-  var editBtns = document.querySelectorAll('.edit');
-  for (var i = 0; i < editBtns.length; i++) {
-    editBtns[i].addEventListener('click', editAccount);
-  }
 }
-createAccountsTable();
+createAndPopulateAccountsTable();
 
 // DELETE account
-function deleteAccount() {
-  var accountId = this.id;
-  //console.log(accountId);
+// function createAndPopulateAccountsTable() {
+// Delete account
+// var deleteBtns = document.querySelectorAll('.delete');
+// for (var i = 0; i < deleteBtns.length; i++) {
+//   deleteBtns[i].addEventListener('click', deleteAccount);
+// }
+// function deleteAccount() {
+//   var accountId = this.id;
+//   //console.log(accountId);
 
-  accountsData.splice(accountId, 1); // 1 quantity of deleted items
+//   accountsData.splice(accountId, 1); // 1 quantity of deleted items
 
-  createAccountsTable();
-}
+//   createAndPopulateAccountsTable();
+// }
 
 // EDIT account
-function editAccount() {
-  //var accountId = this.id;
-  //console.log(accountId);
-  var editAccountId = this.getAttribute('data-id');
-  // console.log(editAccountId);
+// function createAndPopulateAccountsTable() {
+// Edit account
+// var editBtns = document.querySelectorAll('.edit');
+// for (var i = 0; i < editBtns.length; i++) {
+//   editBtns[i].addEventListener('click', editAccount);
+// }
+// function editAccount() {
+//   //var accountId = this.id;
+//   //console.log(accountId);
+//   var editAccountId = this.getAttribute('data-id');
+//   // console.log(editAccountId);
 
 
-  // Show Edit Account page
-  showEditAccountPage();
+//   // Show Edit Account page
+//   showEditAccountPage();
 
-  // Populate the form fields with a value from the array
-  editAccountId.value = accountsData[accountId].dataId;
-  // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
-  // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
-  // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
-}
+//   // Populate the form fields with a value from the array
+//   editAccountId.value = accountsData[accountId].dataId;
+//   // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
+//   // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
+//   // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
+// }
 
 /****** ADD ACCOUNT Form ******/
 
@@ -172,6 +173,6 @@ function addNewAccount() {
   accountsData.push(newAccount);
   // console.log(accountsData);
 
-  createAccountsTable();
+  createAndPopulateAccountsTable();
   showAccountsPage();
 }
