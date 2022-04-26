@@ -81,15 +81,6 @@ function createAndPopulateAccountsTable() {
     text += '<td>' + accountsData[i].accountsDataCreditCard + '</td>';
     text +=
       '<td><button ' +
-      // 'data-id="edit-account-' +
-      // i +
-      // '"' +
-      // 'id="edit-account-' +
-      // i +
-      // '"' +
-      'id="' +
-      i +
-      '"' +
       'data-id="' +
       i +
       '"' +
@@ -110,21 +101,39 @@ function createAndPopulateAccountsTable() {
 
   // DELETE account on click
   var deleteAccountBtns = document.querySelectorAll('.delete'); // All delete buttons
-
   // Add event listener on every delete accound button
   for (var i = 0; i < deleteAccountBtns.length; i++) {
     deleteAccountBtns[i].addEventListener('click', deleteAccount);
   }
-
+  // Delete account
   function deleteAccount() {
+    // ID
     var id = this.id;
     console.log(id);
-
     // Delete account with this Id
     accountsData.splice(this.id, 1); // 1 quantity of deleted items
-
     // Create and populate account data table
     createAndPopulateAccountsTable();
+  }
+
+  // EDIT account on click
+  var editAccountBtns = document.querySelectorAll('.edit'); // All edit buttons
+  // Add event listener on every edit accound button
+  for (var i = 0; i < editAccountBtns.length; i++) {
+    editAccountBtns[i].addEventListener('click', editAccount);
+  }
+  // Edit account
+  function editAccount() {
+    // Show Edit Account page
+    showEditAccountPage();
+    // ID
+    var id = this.getAttribute('data-id');
+    console.log(id);
+    // Populate the form fields with a value from the array
+    editAccountInputId.value = accountsData[id].accountsDataId;
+    // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
+    // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
+    // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
   }
 }
 createAndPopulateAccountsTable();
@@ -189,27 +198,4 @@ function addNewAccount() {
   // Show Accounts page
   showAccountsPage();
 }
-// Edit old account
-
-// EDIT account
-// function createAndPopulateAccountsTable() {
-// Edit account
-// var editBtns = document.querySelectorAll('.edit');
-// for (var i = 0; i < editBtns.length; i++) {
-//   editBtns[i].addEventListener('click', editAccount);
-// }
-// function editAccount() {
-//   //var accountId = this.id;
-//   //console.log(accountId);
-//   var editAccountId = this.getAttribute('data-id');
-//   // console.log(editAccountId);
-
-//   // Show Edit Account page
-//   showEditAccountPage();
-
-//   // Populate the form fields with a value from the array
-//   editAccountId.value = accountsData[accountId].dataId;
-//   // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
-//   // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
-//   // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
-// }
+// Edit old acount
