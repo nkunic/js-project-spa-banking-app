@@ -4,7 +4,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './css/style.css';
 
 // Write Javascript code!
-import './js/accounts-data.js';
 
 /****** IDENTIFIERS ******/
 // Accounts
@@ -67,19 +66,19 @@ var accountsData = [
   },
 ];
 
-
 /****** FORM IDENTIFIERS ******/
 // Add account
+var accountInputId = document.querySelector('#accountInputId');
+var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputDeposit = document.querySelector('#accountInputDeposit');
+var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
+var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
 // Edit account
-
-/****** EDIT ACCOUNT Form ******/
-var editAccountId = document.querySelector('#editAccountId');
-var editAccountNameSurname = document.querySelector('#editAccountNameSurname');
-var editAccountDeposit = document.querySelector('#editAccountDeposit');
-var editAccountCreditCard = document.querySelector('#editAccountCreditCard');
-
-var editAccountBtn = document.querySelector('#editAccountBtn');
-
+var editAccountInputId = document.querySelector('#editAccountInputId');
+var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
+var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
+var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
 
 
 // Populate account data
@@ -105,6 +104,7 @@ function createAccountsTable() {
     text += '</tr>';
   }
 
+  // Inject it to Accounts body
   accountsBody.innerHTML = text;
 
   // Delete account
@@ -144,29 +144,25 @@ function editAccount() {
 
   // Populate the form fields with a value from the array
   editAccountId.value = accountsData[accountId].dataId;
-  // editAccountNameSurname.value = accountsData[dataNameSurname].accountName;
-  // editDepositValue = accountsData[dataDeposit].accountDeposit;
-  // editCreaditCardValue = accountsData[dataCreditCard].accountCreditCard;
+  // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
+  // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
+  // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
 }
 
 /****** ADD ACCOUNT Form ******/
-var addNewAccountBtn = document.querySelector('#addNewAccountBtn');
-var accountId = document.querySelector('#accountId');
-var accountName = document.querySelector('#accountName');
-var accountDeposit = document.querySelector('#accountDeposit');
-var accountCreditCard = document.querySelector('#accountCreditCard');
+
 
 // Add new account
-addNewAccountBtn.addEventListener('click', addNewAccount);
+addNewAccountFormBtn.addEventListener('click', addNewAccount);
 function addNewAccount() {
-  var accountIdValue = accountId.value;
-  var nameSurnameValue = accountName.value;
-  var depositValue = accountDeposit.value;
-  var creaditCardValue = accountCreditCard.value;
-  // console.log(accountIdValue, nameSurnameValue, depositValue, creaditCardValue);
+  var accountInputIdValue = accountInputId.value;
+  var nameSurnameValue = accountInputNameSurname.value;
+  var depositValue = accountInputDeposit.value;
+  var creaditCardValue = accountInputCreditCard.value;
+  // console.log(accountInputIdValue, nameSurnameValue, depositValue, creaditCardValue);
 
   var newAccount = {
-    dataId: accountIdValue,
+    dataId: accountInputIdValue,
     dataNameSurname: nameSurnameValue,
     dataDeposit: depositValue,
     dataCreditCard: creaditCardValue,
