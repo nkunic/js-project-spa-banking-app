@@ -95,34 +95,34 @@ var accountsData = [
 // Create and populate account data table
 function createAndPopulateAccountsTable() {
   // Text assign value of 0
-  var text = '';
+  var content = '';
 
-  // Define text value
+  // Define content value
   for (var i = 0; i < accountsData.length; i++) {
-    text += '<tr>';
-    text += '<td>' + accountsData[i].accountsDataId + '</td>';
-    text += '<td>' + accountsData[i].accountsDataNameSurname + '</td>';
-    text += '<td>' + accountsData[i].accountsDataDeposit + '</td>';
-    text += '<td>' + accountsData[i].accountsDataCreditCard + '</td>';
-    text +=
+    content += '<tr>';
+    content += '<td>' + accountsData[i].accountsDataId + '</td>';
+    content += '<td>' + accountsData[i].accountsDataNameSurname + '</td>';
+    content += '<td>' + accountsData[i].accountsDataDeposit + '</td>';
+    content += '<td>' + accountsData[i].accountsDataCreditCard + '</td>';
+    content +=
       '<td><button ' +
       'data-id="' +
       i +
       '"' +
       'type="button"' +
       'class="btn btn-warning edit">Edit</button></td>';
-    text +=
+    content +=
       '<td><button ' +
       'id="' +
       i +
       '"' +
       'type="button"' +
       'class="btn btn-danger delete">Delete</button></td>';
-    text += '</tr>';
+    content += '</tr>';
   }
 
-  // Inject text value it to Accounts body
-  accountsBody.innerHTML = text;
+  // Inject content value it to Accounts body
+  accountsBody.innerHTML = content;
 
   // DELETE account on click
   var deleteAccountBtns = document.querySelectorAll('.delete'); // All delete buttons
@@ -133,7 +133,7 @@ function createAndPopulateAccountsTable() {
   function deleteAccount() {
     // ID
     var id = this.id;
-    console.log(id);
+    // console.log(id);
     // Delete account with this Id
     accountsData.splice(this.id, 1); // 1 quantity of deleted items
     // Create and populate account data table
@@ -152,7 +152,7 @@ function createAndPopulateAccountsTable() {
     // ID
     // var id = this.getAttribute('data-id');
     id = this.getAttribute('data-id');
-    console.log(id);
+    //console.log(id);
     // Populate the form fields with a value from the array
     editAccountInputId.value = accountsData[id].accountsDataId;
     editAccountInputNameSurname.value =
@@ -200,7 +200,6 @@ function addNewAccount() {
   // Show Accounts page
   showAccountsPage();
 }
-
 // Edit old account
 editAccountFormBtn.addEventListener('click', editOldAccount);
 function editOldAccount() {
@@ -209,25 +208,21 @@ function editOldAccount() {
   var accountInputNameSurnameValue = editAccountInputNameSurname.value;
   var accountInputDepositValue = editAccountInputDeposit.value;
   var accountInputCreditCardValue = editAccountInputCreditCard.value;
-  console.log(
-    accountInputIdValue,
-    accountInputNameSurnameValue,
-    accountInputDepositValue,
-    accountInputCreditCardValue
-  );
+  // console.log(
+  //   accountInputIdValue,
+  //   accountInputNameSurnameValue,
+  //   accountInputDepositValue,
+  //   accountInputCreditCardValue
+  // );
 
-  // Edited account
-  var editedAccount = {
+  // New Accounts data array of objects
+  accountsData[id] = {
     accountsDataId: accountInputIdValue,
     accountsDataNameSurname: accountInputNameSurnameValue,
     accountsDataDeposit: accountInputDepositValue,
     accountsDataCreditCard: accountInputCreditCardValue,
   };
-  console.log(editedAccount);
-
-  // Add new account to accountsData array of objects
-  accountsData.push(editedAccount);
-  console.log(accountsData);
+  //console.log(accountsData);
 
   // Create and populate account data table
   createAndPopulateAccountsTable();
