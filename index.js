@@ -69,8 +69,10 @@ var accountsData = [
 /****** ACCOUNTS TABLE ******/
 // Create and populate account data table
 function createAndPopulateAccountsTable() {
+  // Text assign value of 0
   var text = '';
 
+  // Define text value
   for (var i = 0; i < accountsData.length; i++) {
     text += '<tr>';
     text += '<td>' + accountsData[i].accountsDataId + '</td>';
@@ -79,20 +81,51 @@ function createAndPopulateAccountsTable() {
     text += '<td>' + accountsData[i].accountsDataCreditCard + '</td>';
     text +=
       '<td><button ' +
-      'data-id="edit-account-' + i + '"' +
-      'id="edit-account-' + i + '"' +
-      'type="button"' + 
+      // 'data-id="edit-account-' +
+      // i +
+      // '"' +
+      // 'id="edit-account-' +
+      // i +
+      // '"' +
+      'id="' +
+      i +
+      '"' +
+      'data-id="' +
+      i +
+      '"' +
+      'type="button"' +
       'class="btn btn-warning edit">Edit</button></td>';
     text +=
-      '<td><button ' + 
-      'id="delete-account-' + i + '"' + 
+      '<td><button ' +
+      'id="' +
+      i +
+      '"' +
       'type="button"' +
       'class="btn btn-danger delete">Delete</button></td>';
     text += '</tr>';
   }
 
-  // Inject it to Accounts body
+  // Inject text value it to Accounts body
   accountsBody.innerHTML = text;
+
+  // DELETE account on click
+  var deleteAccountBtns = document.querySelectorAll('.delete'); // All delete buttons
+
+  // Add event listener on every delete accound button
+  for (var i = 0; i < deleteAccountBtns.length; i++) {
+    deleteAccountBtns[i].addEventListener('click', deleteAccount);
+  }
+
+  function deleteAccount() {
+    var id = this.id;
+    console.log(id);
+
+    // Delete account with this Id
+    accountsData.splice(this.id, 1); // 1 quantity of deleted items
+
+    // Create and populate account data table
+    createAndPopulateAccountsTable();
+  }
 }
 createAndPopulateAccountsTable();
 
@@ -100,15 +133,23 @@ createAndPopulateAccountsTable();
 // Add account
 var addAccountForm = document.querySelector('#addAccountForm');
 var accountInputId = document.querySelector('#accountInputId');
-var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputNameSurname = document.querySelector(
+  '#accountInputNameSurname'
+);
 var accountInputDeposit = document.querySelector('#accountInputDeposit');
 var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
 var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
 // Edit account
 var editAccountInputId = document.querySelector('#editAccountInputId');
-var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
-var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
-var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountInputNameSurname = document.querySelector(
+  '#editAccountInputNameSurname'
+);
+var editAccountInputDeposit = document.querySelector(
+  '#editAccountInputDeposit'
+);
+var editAccountInputCreditCard = document.querySelector(
+  '#editAccountInputCreditCard'
+);
 var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
 
 /****** FORM ******/
@@ -119,51 +160,36 @@ function addNewAccount() {
   var accountInputNameSurnameValue = accountInputNameSurname.value;
   var accountInputDepositValue = accountInputDeposit.value;
   var accountInputCreaditCardValue = accountInputCreditCard.value;
-  console.log(accountInputIdValue, accountInputNameSurnameValue, accountInputDepositValue, accountInputCreaditCardValue);
+  // console.log(
+  //   accountInputIdValue,
+  //   accountInputNameSurnameValue,
+  //   accountInputDepositValue,
+  //   accountInputCreaditCardValue
+  // );
 
-  // New account 
+  // New account
   var newAccount = {
     accountsDataId: accountInputIdValue,
     accountsDataNameSurname: accountInputNameSurnameValue,
     accountsDataDeposit: accountInputDepositValue,
     accountsDataCreditCard: accountInputCreaditCardValue,
   };
-  console.log(newAccount);
+  //console.log(newAccount);
 
   // Add new account to accountsData array of objects
   accountsData.push(newAccount);
-  console.log(accountsData);
+  //console.log(accountsData);
 
-  // Create and populate account data table 
+  // Create and populate account data table
   createAndPopulateAccountsTable();
 
-  // Clear Add new account form 
+  // Clear Add new account form
   addAccountForm.reset();
 
   // Show Accounts page
   showAccountsPage();
 }
 // Edit old account
-
-
-
-
-
-// DELETE account
-// function createAndPopulateAccountsTable() {
-// Delete account
-// var deleteBtns = document.querySelectorAll('.delete');
-// for (var i = 0; i < deleteBtns.length; i++) {
-//   deleteBtns[i].addEventListener('click', deleteAccount);
-// }
-// function deleteAccount() {
-//   var accountId = this.id;
-//   //console.log(accountId);
-
-//   accountsData.splice(accountId, 1); // 1 quantity of deleted items
-
-//   createAndPopulateAccountsTable();
-// }
 
 // EDIT account
 // function createAndPopulateAccountsTable() {
@@ -178,7 +204,6 @@ function addNewAccount() {
 //   var editAccountId = this.getAttribute('data-id');
 //   // console.log(editAccountId);
 
-
 //   // Show Edit Account page
 //   showEditAccountPage();
 
@@ -188,5 +213,3 @@ function addNewAccount() {
 //   // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
 //   // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
 // }
-
-
