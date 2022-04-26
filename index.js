@@ -20,16 +20,26 @@ var editAccountView = document.querySelector('#editAccountView');
 // Add account
 var addAccountForm = document.querySelector('#addAccountForm');
 var accountInputId = document.querySelector('#accountInputId');
-var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputNameSurname = document.querySelector(
+  '#accountInputNameSurname'
+);
 var accountInputDeposit = document.querySelector('#accountInputDeposit');
 var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
 var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
 // Edit account
+var editAccountForm = document.querySelector('#editAccountForm');
 var editAccountInputId = document.querySelector('#editAccountInputId');
-var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
-var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
-var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountInputNameSurname = document.querySelector(
+  '#editAccountInputNameSurname'
+);
+var editAccountInputDeposit = document.querySelector(
+  '#editAccountInputDeposit'
+);
+var editAccountInputCreditCard = document.querySelector(
+  '#editAccountInputCreditCard'
+);
 var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
+var id;
 
 /****** SHOW PAGES ******/
 // Show Accounts page
@@ -140,20 +150,21 @@ function createAndPopulateAccountsTable() {
     // Show Edit Account page
     showEditAccountPage();
     // ID
-    var id = this.getAttribute('data-id');
+    // var id = this.getAttribute('data-id');
+    id = this.getAttribute('data-id');
     console.log(id);
     // Populate the form fields with a value from the array
     editAccountInputId.value = accountsData[id].accountsDataId;
     editAccountInputNameSurname.value =
-    accountsData[id].accountsDataNameSurname;
+      accountsData[id].accountsDataNameSurname;
     editAccountInputDeposit.value = accountsData[id].accountsDataDeposit;
     editAccountInputCreditCard.value = accountsData[id].accountsDataCreditCard;
   }
-
 }
 createAndPopulateAccountsTable();
 
-/****** ADD NEW ACCOUNT FORM ******/
+/****** FORM ******/
+// Add new account
 addNewAccountFormBtn.addEventListener('click', addNewAccount);
 function addNewAccount() {
   var accountInputIdValue = accountInputId.value;
@@ -185,6 +196,44 @@ function addNewAccount() {
 
   // Clear Add new account form
   addAccountForm.reset();
+
+  // Show Accounts page
+  showAccountsPage();
+}
+
+// Edit old account
+editAccountFormBtn.addEventListener('click', editOldAccount);
+function editOldAccount() {
+  // Populate the form fields with a value from the input field
+  var accountInputIdValue = editAccountInputId.value;
+  var accountInputNameSurnameValue = editAccountInputNameSurname.value;
+  var accountInputDepositValue = editAccountInputDeposit.value;
+  var accountInputCreditCardValue = editAccountInputCreditCard.value;
+  console.log(
+    accountInputIdValue,
+    accountInputNameSurnameValue,
+    accountInputDepositValue,
+    accountInputCreditCardValue
+  );
+
+  // Edited account
+  var editedAccount = {
+    accountsDataId: accountInputIdValue,
+    accountsDataNameSurname: accountInputNameSurnameValue,
+    accountsDataDeposit: accountInputDepositValue,
+    accountsDataCreditCard: accountInputCreditCardValue,
+  };
+  console.log(editedAccount);
+
+  // Add new account to accountsData array of objects
+  accountsData.push(editedAccount);
+  console.log(accountsData);
+
+  // Create and populate account data table
+  createAndPopulateAccountsTable();
+
+  // Clear Edit old account form
+  editAccountForm.reset();
 
   // Show Accounts page
   showAccountsPage();
