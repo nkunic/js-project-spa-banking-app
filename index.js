@@ -5,7 +5,7 @@ import './css/style.css';
 
 // Write Javascript code!
 
-/****** PAGE IDENTIFIERS ******/
+/****** PAGE SELECTORS ******/
 // Accounts
 var showAccountsPageBtn = document.querySelector('#showAccountsPageBtn');
 var accountsView = document.querySelector('#accountsView');
@@ -15,6 +15,21 @@ var showAddAccountPageBtn = document.querySelector('#showAddAccountPageBtn');
 var addAccountView = document.querySelector('#addAccountView');
 // Edit account
 var editAccountView = document.querySelector('#editAccountView');
+
+/****** FORM SELECTORS ******/
+// Add account
+var addAccountForm = document.querySelector('#addAccountForm');
+var accountInputId = document.querySelector('#accountInputId');
+var accountInputNameSurname = document.querySelector('#accountInputNameSurname');
+var accountInputDeposit = document.querySelector('#accountInputDeposit');
+var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
+var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
+// Edit account
+var editAccountInputId = document.querySelector('#editAccountInputId');
+var editAccountInputNameSurname = document.querySelector('#editAccountInputNameSurname');
+var editAccountInputDeposit = document.querySelector('#editAccountInputDeposit');
+var editAccountInputCreditCard = document.querySelector('#editAccountInputCreditCard');
+var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
 
 /****** SHOW PAGES ******/
 // Show Accounts page
@@ -105,7 +120,6 @@ function createAndPopulateAccountsTable() {
   for (var i = 0; i < deleteAccountBtns.length; i++) {
     deleteAccountBtns[i].addEventListener('click', deleteAccount);
   }
-  // Delete account
   function deleteAccount() {
     // ID
     var id = this.id;
@@ -122,7 +136,6 @@ function createAndPopulateAccountsTable() {
   for (var i = 0; i < editAccountBtns.length; i++) {
     editAccountBtns[i].addEventListener('click', editAccount);
   }
-  // Edit account
   function editAccount() {
     // Show Edit Account page
     showEditAccountPage();
@@ -131,38 +144,16 @@ function createAndPopulateAccountsTable() {
     console.log(id);
     // Populate the form fields with a value from the array
     editAccountInputId.value = accountsData[id].accountsDataId;
-    // editAccountInputNameSurname.value = accountsData[dataNameSurname].accountName;
-    // editDepositValue = accountsData[dataDeposit].accountInputDeposit;
-    // editCreaditCardValue = accountsData[dataCreditCard].accountInputCreditCard;
+    editAccountInputNameSurname.value =
+    accountsData[id].accountsDataNameSurname;
+    editAccountInputDeposit.value = accountsData[id].accountsDataDeposit;
+    editAccountInputCreditCard.value = accountsData[id].accountsDataCreditCard;
   }
+
 }
 createAndPopulateAccountsTable();
 
-/****** FORM IDENTIFIERS ******/
-// Add account
-var addAccountForm = document.querySelector('#addAccountForm');
-var accountInputId = document.querySelector('#accountInputId');
-var accountInputNameSurname = document.querySelector(
-  '#accountInputNameSurname'
-);
-var accountInputDeposit = document.querySelector('#accountInputDeposit');
-var accountInputCreditCard = document.querySelector('#accountInputCreditCard');
-var addNewAccountFormBtn = document.querySelector('#addNewAccountFormBtn');
-// Edit account
-var editAccountInputId = document.querySelector('#editAccountInputId');
-var editAccountInputNameSurname = document.querySelector(
-  '#editAccountInputNameSurname'
-);
-var editAccountInputDeposit = document.querySelector(
-  '#editAccountInputDeposit'
-);
-var editAccountInputCreditCard = document.querySelector(
-  '#editAccountInputCreditCard'
-);
-var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
-
-/****** FORM ******/
-// Add new account
+/****** ADD NEW ACCOUNT FORM ******/
 addNewAccountFormBtn.addEventListener('click', addNewAccount);
 function addNewAccount() {
   var accountInputIdValue = accountInputId.value;
@@ -198,4 +189,3 @@ function addNewAccount() {
   // Show Accounts page
   showAccountsPage();
 }
-// Edit old acount
