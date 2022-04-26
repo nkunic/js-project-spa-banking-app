@@ -10,14 +10,18 @@
         mb-2
       "
     >
-      <h1>SPA Banking app</h1>
+      <h1>Banking app</h1>
     </a>
 
     <div class="d-flex justify-content-center align-items-center">
-      <button id="showAccountsBtn" type="button" class="btn btn-primary">
+      <button id="showAccountsPageBtn" type="button" class="btn btn-primary">
         Accounts
       </button>
-      <button id="showAddAccountBtn" type="button" class="ms-3 btn btn-info">
+      <button
+        id="showAddAccountPageBtn"
+        type="button"
+        class="ms-3 btn btn-info"
+      >
         Add account
       </button>
     </div>
@@ -113,60 +117,61 @@
         <div class="row justify-content-center">
           <div class="col-12 col-md-10">
             <h2 class="mb-4">Edit account</h2>
-            <div id="editAccountBody">
-              <form>
-                <div class="mb-3">
-                  <label for="editAccountId" class="form-label">ID</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="editAccountId"
-                    aria-describedby="editAccountId"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="editAccountName" class="form-label">Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="editAccountName"
-                    aria-describedby="editAccountName"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="editAccountDeposit" class="form-label"
-                    >Deposit</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="editAccountDeposit"
-                    aria-describedby="editAccountDeposit"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="editAccountCreditCard" class="form-label"
-                    >Credit card</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="editAccountCreditCard"
-                    aria-describedby="editAccountCreditCard"
-                  />
-                </div>
-                <button
-                  id="editAccountBtn"
-                  class="btn btn-warning w-100"
-                  type="button"
+
+            <form>
+              <div class="mb-3">
+                <label for="editAccountId" class="form-label">ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editAccountId"
+                  aria-describedby="editAccountId"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editAccountNameSurname" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editAccountNameSurname"
+                  aria-describedby="editAccountNameSurname"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editAccountDeposit" class="form-label"
+                  >Deposit</label
                 >
-                  Edit account
-                </button>
-              </form>
-            </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editAccountDeposit"
+                  aria-describedby="editAccountDeposit"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editAccountCreditCard" class="form-label"
+                  >Credit card</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editAccountCreditCard"
+                  aria-describedby="editAccountCreditCard"
+                />
+              </div>
+              <button
+                id="editAccountBtn"
+                class="btn btn-warning w-100"
+                type="button"
+              >
+                Edit account
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </main>
 </div>
+
+

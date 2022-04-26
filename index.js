@@ -4,23 +4,22 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './css/style.css';
 
 // Write Javascript code!
+import './js/accounts-data.js';
 
-/****** ACCOUNTS ******/
-var showAccountsBtn = document.querySelector('#showAccountsBtn');
+/****** IDENTIFIERS ******/
+// Accounts
+var showAccountsPageBtn = document.querySelector('#showAccountsPageBtn');
 var accountsView = document.querySelector('#accountsView');
 var accountsBody = document.querySelector('#accountsBody');
-
-/****** EDIT ACCOUNT ******/
+// Add account
+var showAddAccountPageBtn = document.querySelector('#showAddAccountPageBtn');
+var addAccountView = document.querySelector('#addAccountView');
+// Edit account
 var editAccountView = document.querySelector('#editAccountView');
-var editAccountBody = document.querySelector('#editAccountBody');
-var editAccountId = document.querySelector('#editAccountId');
-var editAccountName = document.querySelector('#editAccountName');
-var editAccountDeposit = document.querySelector('#editAccountDeposit');
-var editAccountCreditCard = document.querySelector('#editAccountCreditCard');
-var editAccountBtn = document.querySelector('#editAccountBtn');
 
+/****** SHOW PAGES ******/
 // Show Accounts page
-showAccountsBtn.addEventListener('click', showAccountsPage);
+showAccountsPageBtn.addEventListener('click', showAccountsPage);
 function showAccountsPage() {
   if (accountsView.classList.contains('d-none')) {
     accountsView.classList.remove('d-none');
@@ -28,28 +27,60 @@ function showAccountsPage() {
     editAccountView.classList.add('d-none');
   }
 }
+// Show Add account page
+showAddAccountPageBtn.addEventListener('click', showAddAccountPage);
+function showAddAccountPage() {
+  if (addAccountView.classList.contains('d-none')) {
+    accountsView.classList.add('d-none');
+    addAccountView.classList.remove('d-none');
+    editAccountView.classList.add('d-none');
+  }
+}
+// Show Edit Account page
+function showEditAccountPage() {
+  if (editAccountView.classList.contains('d-none')) {
+    accountsView.classList.add('d-none');
+    addAccountView.classList.add('d-none');
+    editAccountView.classList.remove('d-none');
+  }
+}
 
-// Accounts data
+/****** ACCOUNTS DATA ******/
 var accountsData = [
   {
-    id: '1',
-    name: 'Mark Otto',
-    deposit: '12000',
-    cCard: 'Visa',
+    accountsDataId: '1',
+    accountsDataNameSurname: 'Mark Otto',
+    accountsDataDeposit: '12000',
+    accountsDataCreditCard: 'Visa',
   },
   {
-    id: '2',
-    name: 'Jacob Thornton',
-    deposit: '15000',
-    cCard: 'Mastercard',
+    accountsDataId: '2',
+    accountsDataNameSurname: 'Jacob Thornton',
+    accountsDataDeposit: '15000',
+    accountsDataCreditCard: 'Mastercard',
   },
   {
-    id: '3',
-    name: 'Larry Bird',
-    deposit: '100000',
-    cCard: 'American express',
+    accountsDataId: '3',
+    accountsDataNameSurname: 'Larry Bird',
+    accountsDataDeposit: '100000',
+    accountsDataCreditCard: 'American express',
   },
 ];
+
+
+/****** FORM IDENTIFIERS ******/
+// Add account
+// Edit account
+
+/****** EDIT ACCOUNT Form ******/
+var editAccountId = document.querySelector('#editAccountId');
+var editAccountNameSurname = document.querySelector('#editAccountNameSurname');
+var editAccountDeposit = document.querySelector('#editAccountDeposit');
+var editAccountCreditCard = document.querySelector('#editAccountCreditCard');
+
+var editAccountBtn = document.querySelector('#editAccountBtn');
+
+
 
 // Populate account data
 function createAccountsTable() {
@@ -57,10 +88,10 @@ function createAccountsTable() {
 
   for (var i = 0; i < accountsData.length; i++) {
     text += '<tr>';
-    text += '<td>' + accountsData[i].id + '</td>';
-    text += '<td>' + accountsData[i].name + '</td>';
-    text += '<td>' + accountsData[i].deposit + '</td>';
-    text += '<td>' + accountsData[i].cCard + '</td>';
+    text += '<td>' + accountsData[i].dataId + '</td>';
+    text += '<td>' + accountsData[i].dataNameSurname + '</td>';
+    text += '<td>' + accountsData[i].dataDeposit + '</td>';
+    text += '<td>' + accountsData[i].dataCreditCard + '</td>';
     text +=
       '<td><button data-id="edit-account-' +
       i +
@@ -107,56 +138,38 @@ function editAccount() {
   var editAccountId = this.getAttribute('data-id');
   // console.log(editAccountId);
 
+
   // Show Edit Account page
-  function showEditAccountPage() {
-    if (editAccountView.classList.contains('d-none')) {
-      accountsView.classList.add('d-none');
-      addAccountView.classList.add('d-none');
-      editAccountView.classList.remove('d-none');
-    }
-  }
   showEditAccountPage();
 
-  //
-  editAccountId.value = accountsData[id].accountId;
-  // editAccountName.value = accountsData[name].accountName;
-  // editDepositValue = accountsData[deposit].accountDeposit;
-  // editCreaditCardValue = accountsData[cCard].accountCreditCard;
+  // Populate the form fields with a value from the array
+  editAccountId.value = accountsData[accountId].dataId;
+  // editAccountNameSurname.value = accountsData[dataNameSurname].accountName;
+  // editDepositValue = accountsData[dataDeposit].accountDeposit;
+  // editCreaditCardValue = accountsData[dataCreditCard].accountCreditCard;
 }
 
-/****** ADD ACCOUNT ******/
-var showAddAccountBtn = document.querySelector('#showAddAccountBtn');
-var addAccountView = document.querySelector('#addAccountView');
+/****** ADD ACCOUNT Form ******/
 var addNewAccountBtn = document.querySelector('#addNewAccountBtn');
 var accountId = document.querySelector('#accountId');
 var accountName = document.querySelector('#accountName');
 var accountDeposit = document.querySelector('#accountDeposit');
 var accountCreditCard = document.querySelector('#accountCreditCard');
 
-// Show Add account page
-showAddAccountBtn.addEventListener('click', showAddAccountPage);
-function showAddAccountPage() {
-  if (addAccountView.classList.contains('d-none')) {
-    accountsView.classList.add('d-none');
-    addAccountView.classList.remove('d-none');
-    editAccountView.classList.add('d-none');
-  }
-}
-
 // Add new account
 addNewAccountBtn.addEventListener('click', addNewAccount);
 function addNewAccount() {
   var accountIdValue = accountId.value;
-  var nameValue = accountName.value;
+  var nameSurnameValue = accountName.value;
   var depositValue = accountDeposit.value;
   var creaditCardValue = accountCreditCard.value;
-  // console.log(accountIdValue, nameValue, depositValue, creaditCardValue);
+  // console.log(accountIdValue, nameSurnameValue, depositValue, creaditCardValue);
 
   var newAccount = {
-    id: accountIdValue,
-    name: nameValue,
-    deposit: depositValue,
-    cCard: creaditCardValue,
+    dataId: accountIdValue,
+    dataNameSurname: nameSurnameValue,
+    dataDeposit: depositValue,
+    dataCreditCard: creaditCardValue,
   };
   //console.log(newAccount);
 
