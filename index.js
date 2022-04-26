@@ -112,7 +112,6 @@ var editAccountInputCreditCard = document.querySelector('#editAccountInputCredit
 var editAccountFormBtn = document.querySelector('#editAccountFormBtn');
 
 /****** FORM ******/
-
 // Add new account
 addNewAccountFormBtn.addEventListener('click', addNewAccount);
 function addNewAccount() {
@@ -144,8 +143,7 @@ function addNewAccount() {
   // Show Accounts page
   showAccountsPage();
 }
-
-
+// Edit old account
 
 
 
